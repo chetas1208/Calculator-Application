@@ -37,6 +37,8 @@ mern-calculator-app
 
 ### Prerequisites
 
+- React.js
+- Express.js
 - Node.js
 - MongoDB
 
