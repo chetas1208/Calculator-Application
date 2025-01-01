@@ -1,0 +1,47 @@
+.conversion-history {
+  margin-top: 20px;
+  padding: 10px;
+  border: 2px solid #007BFF;
+  border-radius: 15px;
+  background-color: #f0f8ff;
+  max-height: 200px;
+  overflow-y: auto;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.conversion-history h3 {
+  margin-bottom: 10px;
+  text-align: center;
+  color: #007BFF;
+}
+
+.conversion-history ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.conversion-history li {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+  font-size: 16px;
+}
+
+.conversion-history li:last-child {
+  border-bottom: none;
+}
+
+/* Dark Mode Styling */
+.dark-mode .conversion-history {
+  background-color: #555;
+  border-color: #666;
+  color: #fff;
+}
+
+.dark-mode .conversion-history h3 {
+  color: #66ff66;
+}
+
+.dark-mode .conversion-history li {
+  border-bottom: 1px solid #777;
+}

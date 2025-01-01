@@ -1,0 +1,77 @@
+/* Vertical Navbar Styles */
+.hamburger {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1002;
+  }
+  
+  .side-navbar {
+    position: fixed;
+    top: 50px; /* Height of top navbar */
+    left: -250px;
+    width: 250px;
+    height: calc(100% - 50px);
+    background-color: #333;
+    color: #fff;
+    padding-top: 20px;
+    transition: left 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .side-navbar.open {
+    left: 0;
+  }
+  
+  .side-navbar .side-navbar-links {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .side-navbar .side-navbar-links li {
+    padding: 15px 20px;
+  }
+  
+  .side-navbar .side-navbar-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .side-navbar .side-navbar-links a:hover {
+    background-color: #575757;
+  }
+  
+  .side-navbar .active {
+    background-color: #575757;
+  }
+  
+  /* Overlay Styles */
+  .overlay {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 50px);
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+  
+  /* Dark Mode Styles */
+  .app-container.dark-mode .side-navbar {
+    background-color: #444;
+  }
+  
+  .app-container.dark-mode .side-navbar .side-navbar-links a:hover,
+  .app-container.dark-mode .side-navbar .active {
+    background-color: #555;
+  }

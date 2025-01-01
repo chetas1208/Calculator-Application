@@ -1,0 +1,28 @@
+.currency-display {
+    margin-top: 20px;
+    min-height: 40px;
+    transition: opacity 0.5s ease;
+  }
+  
+  .currency-display h3 {
+    color: #007BFF;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .currency-display h3:hover {
+    transform: scale(1.05);
+  }
+  
+  .dark-mode .currency-display h3 {
+    color: #66ff66;
+  }
+  
+  .error-message {
+    color: #dc3545;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .dark-mode .error-message {
+    color: #ff6666;
+  }

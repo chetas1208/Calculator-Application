@@ -1,0 +1,26 @@
+.display {
+  background-color: #ffffff; /* Light background by default */
+  color: #000000; /* Dark text for readability */
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: right;
+  font-size: 28px;
+  min-height: 80px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+.display:hover {
+  background-color: #f0f0f0;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .display {
+  background-color: #222; /* Dark background for dark mode */
+  color: #fff; /* White text */
+}
+
+.dark-mode .display:hover {
+  background-color: #333;
+}

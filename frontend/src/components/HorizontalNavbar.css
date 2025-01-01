@@ -1,0 +1,75 @@
+/* Horizontal Navbar Styles */
+.horizontal-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #007BFF;
+    padding: 10px 20px;
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1001;
+    transition: background-color 0.3s ease;
+  }
+  
+  .horizontal-navbar .navbar-logo h2 {
+    margin: 0;
+  }
+  
+  .horizontal-navbar .navbar-links {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+    justify-content: center; /* Center the links */
+  }
+  
+  .horizontal-navbar .navbar-links li {
+    margin: 0 10px;
+  }
+  
+  .horizontal-navbar .navbar-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s ease;
+  }
+  
+  .horizontal-navbar .navbar-links a:hover,
+  .horizontal-navbar .navbar-links .active {
+    color: #ffd700;
+  }
+  
+  .horizontal-navbar .dark-mode-toggle {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px;
+    transition: color 0.3s ease;
+    margin-right: 25px; /* Adjust this value to move the button left */
+  }
+  
+  .horizontal-navbar .dark-mode-toggle:hover {
+    color: #ffd700;
+  }
+  
+  /* Dark Mode Styles */
+  .app-container.dark-mode .horizontal-navbar {
+    background-color: #333;
+  }
+  
+  .app-container.dark-mode .horizontal-navbar .navbar-links a:hover,
+  .app-container.dark-mode .horizontal-navbar .navbar-links .active {
+    color: #ffd700;
+  }
+  
+  .app-container.dark-mode .horizontal-navbar .dark-mode-toggle {
+    color: #ffd700;
+  }

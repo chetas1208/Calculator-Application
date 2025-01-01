@@ -1,0 +1,121 @@
+.calculator-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.calculator {
+  width: 320px;
+  margin: 20px;
+  padding: 25px;
+  border: 2px solid #007BFF;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
+  background-color: #f0f8ff;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.dark-mode .calculator {
+  background-color: #444;
+  border-color: #555;
+}
+
+.calculator:hover {
+  background-color: #ffffff;
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
+}
+
+.display {
+  margin-bottom: 25px;
+  padding: 15px;
+  border: 2px solid #007BFF;
+  border-radius: 8px;
+  background-color: #ffffff;
+  font-size: 26px;
+  text-align: right;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dark-mode .calculator .display {
+  background-color: #555;
+  border-color: #666;
+}
+
+.display:focus {
+  border-color: #0056b3;
+  box-shadow: 0 0 10px rgba(0, 86, 179, 0.5);
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  animation: fadeInButtons 0.5s ease-in-out;
+}
+
+@keyframes fadeInButtons {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.buttons button {
+  padding: 18px;
+  font-size: 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #007BFF;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 123, 255, 0.4);
+}
+
+.buttons button:hover {
+  background-color: #0056b3;
+}
+
+.buttons button:active {
+  transform: scale(0.98);
+  box-shadow: 0 1px 3px rgba(0, 86, 179, 0.4);
+}
+
+.result {
+  margin-top: 25px;
+  padding: 12px;
+  font-size: 22px;
+  text-align: right;
+  color: #28a745;
+  transition: color 0.3s ease;
+}
+
+.result.error {
+  color: #dc3545;
+}
+
+@media (max-width: 400px) {
+  .calculator {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .display {
+    font-size: 20px;
+    padding: 12px;
+  }
+
+  .buttons button {
+    padding: 15px;
+    font-size: 18px;
+  }
+
+  .result {
+    font-size: 20px;
+  }
+}

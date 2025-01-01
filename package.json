@@ -1,0 +1,42 @@
+{
+  "name": "mern-calculator-app",
+  "version": "1.0.0",
+  "private": true,
+  "resolutions": {
+    "webpack": "4.42.0"
+  },
+  "scripts": {
+    "preinstall": "npx npm-force-resolutions",
+    "start": "npm run dev",
+    "server": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.1",
+    "nodemon": "^3.1.9"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "author": "Your Name",
+  "license": "MIT"
+}
