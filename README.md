@@ -1,6 +1,6 @@
 # mern-calculator-app/mern-calculator-app/README.md
 
-# MERN Calculator App
+# Calculator Application
 
 This is a simple calculator application built using the MERN stack (MongoDB, Express, React, Node.js). The project is structured to provide a clear separation between the frontend and backend, making it easy to maintain and scale.
 
