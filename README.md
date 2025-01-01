@@ -1,10 +1,14 @@
-# mern-calculator-app/mern-calculator-app/README.md
+# MERN Calculator App
 
-# Calculator Application
+The MERN Calculator App is a comprehensive calculator application built using the MERN stack (MongoDB, Express, React, Node.js). This application allows users to perform both arithmetic and currency calculations, providing a user-friendly interface and maintaining a history of all calculations. The project is structured to provide a clear separation between the frontend and backend, making it easy to maintain and scale.
 
-This is a simple calculator application built using the MERN stack (MongoDB, Express, React, Node.js). The project is structured to provide a clear separation between the frontend and backend, making it easy to maintain and scale.
+## Features
 
-## Project Structure
+- **Arithmetic Calculator:** Perform basic operations like addition, subtraction, multiplication, and division.
+- **Currency Calculator:** Convert amounts between different currencies using real-time exchange rates.
+- **Calculation History:** View a history of all performed calculations.
+- **Responsive Design:** Optimized for various screen sizes and devices.
+- **Dark and Light Modes:** Toggle between dark and light themes for better user experience.
 
 ```
 mern-calculator-app
