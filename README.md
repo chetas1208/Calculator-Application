@@ -9,26 +9,37 @@ This is a simple calculator application built using the MERN stack (MongoDB, Exp
 ```
 mern-calculator-app
 ├── backend
-│   ├── controllers
-│   │   └── calculatorController.js
-│   ├── models
-│   │   └── calculation.js
-│   ├── routes
-│   │   └── calculatorRoutes.js
-│   ├── app.js
-│   └── server.js
+│ ├── controllers
+│ │ ├── calculationController.js
+│ │ └── conversionController.js
+│ ├── models
+│ │ ├── calculation.js
+│ │ └── conversion.js
+│ ├── routes
+│ │ ├── calculationRoutes.js
+│ │ └── conversionRoutes.js
+│ ├── app.js
+│ └── server.js
 ├── frontend
-│   ├── public
-│   │   └── index.html
-│   ├── src
-│   │   ├── components
-│   │   │   ├── Calculator.js
-│   │   │   └── Display.js
-│   │   ├── App.js
-│   │   ├── index.js
-│   │   └── reportWebVitals.js
-│   ├── package.json
-│   └── README.md
+│ ├── public
+│ │ └── index.html
+│ ├── src
+│ │ ├── components
+│ │ │ ├── About.js
+│ │ │ ├── Calculator.js
+│ │ │ ├── CalculationHistory.js
+│ │ │ ├── ConversionHistory.js
+│ │ │ ├── CurrencyCalculator.js
+│ │ │ ├── CurrencyDisplay.js
+│ │ │ ├── Display.js
+│ │ │ ├── HorizontalNavbar.js
+│ │ │ └── VerticalNavbar.js
+│ │ ├── Api.js
+│ │ ├── App.js
+│ │ ├── index.js
+│ │ └── App.css
+│ ├── package.json
+│ └── README.md
 ├── package.json
 └── README.md
 ```
