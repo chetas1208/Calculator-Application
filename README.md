@@ -27,7 +27,6 @@ The MERN Calculator App is a comprehensive calculator application built using th
 ```
 mern-calculator-app
 ├── backend
-<<<<<<< HEAD
 │   ├── controllers
 │   │   ├── calculatorController.js
 │   │   ├── currencyController.js
@@ -98,7 +97,6 @@ mern-calculator-app
 │ │ └── App.css
 │ ├── package.json
 │ └── README.md
->>>>>>> 6f0a08a5f03c35a71bf1861520fda14e3a364bc1
 ├── package.json
 └── README.md
 ```
