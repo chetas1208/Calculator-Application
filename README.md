@@ -175,7 +175,8 @@ This project is licensed under the MIT License.
 ![GitHub repo views](https://komarev.com/ghpvc/?username=your-username&repo=mern-calculator-app&color=blue)
 
 ## Contact
+For any inquiries, please contact [Email](mailto:chetas.n.parekh@gmail.com).
 
--For any inquiries, please contact [Email](mailto:chetas.n.parekh@gmail.com).
+
 =======
 This project is licensed under the MIT License.
