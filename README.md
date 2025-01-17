@@ -15,7 +15,7 @@ This is a feature-rich calculator application built using the MERN stack (MongoD
 # MERN Calculator App
 
 The MERN Calculator App is a comprehensive calculator application built using the MERN stack (MongoDB, Express, React, Node.js). This application allows users to perform both arithmetic and currency calculations, providing a user-friendly interface and maintaining a history of all calculations. The project is structured to provide a clear separation between the frontend and backend, making it easy to maintain and scale.
->>>>>>> 6f0a08a5f03c35a71bf1861520fda14e3a364bc1
+
 
 ## Features
 
@@ -170,14 +170,13 @@ Contributions are welcome! Please fork the repository and submit a pull request.
 
 This project is licensed under the MIT License.
 
-<<<<<<< HEAD
+
 ## Repository Views
 
 ![GitHub repo views](https://komarev.com/ghpvc/?username=your-username&repo=mern-calculator-app&color=blue)
 
 ## Contact
 
-For any inquiries, please contact [Email](mailto:chetas.n.parekh@gmail.com).
+-For any inquiries, please contact [Email](mailto:chetas.n.parekh@gmail.com).
 =======
 This project is licensed under the MIT License.
->>>>>>> 6f0a08a5f03c35a71bf1861520fda14e3a364bc1
