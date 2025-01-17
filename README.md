@@ -178,5 +178,5 @@ This project is licensed under the MIT License.
 For any inquiries, please contact [Email](mailto:chetas.n.parekh@gmail.com).
 
 
-=======
+##
 This project is licensed under the MIT License.
