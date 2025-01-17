@@ -1,34 +1,40 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaCalculator, FaMoneyBillWave, FaInfoCircle, FaSun, FaMoon } from 'react-icons/fa';
 import './HorizontalNavbar.css';
 
-function HorizontalNavbar({ darkMode, toggleDarkMode }) {
+function HorizontalNavbar() {
+  const [time, setTime] = useState(new Date().toLocaleTimeString());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTime(new Date().toLocaleTimeString());
+    }, 50); // Set to 50ms
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <nav className="horizontal-navbar">
       <div className="navbar-logo">
-        <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Calculator</h2>
+        <h2>Calculator Pro</h2>
       </div>
       <ul className="navbar-links">
         <li>
-          <NavLink exact to="/about" activeClassName="active">
+          <NavLink to="/about">
             <FaInfoCircle /> About
           </NavLink>
         </li>
         <li>
-          <NavLink exact to="/arithmetic" activeClassName="active">
-            <FaCalculator /> Arithmetic Calculator
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/currency" activeClassName="active">
-            <FaMoneyBillWave /> Currency Calculator
+          <NavLink to="/arithmetic">
+            <FaCalculator /> Quick Calculate
           </NavLink>
         </li>
       </ul>
-      <button className="dark-mode-toggle" onClick={toggleDarkMode}>
-        {darkMode ? <FaSun /> : <FaMoon />}
-      </button>
+      <div className="current-time">
+        {time}
+      </div>
     </nav>
   );
 }

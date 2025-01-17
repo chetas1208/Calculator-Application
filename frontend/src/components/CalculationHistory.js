@@ -1,14 +1,16 @@
 import React from 'react';
 import './CalculationHistory.css';
 import PropTypes from 'prop-types';
+import { FaCopy, FaTrash } from 'react-icons/fa';
 
-function CalculationHistory({ history }) {
+function CalculationHistory({ history, onDelete, onCopy }) {
   const getOperationSymbol = (operation) => {
     const symbols = {
       add: '+',
       subtract: '-',
       multiply: '*',
       divide: '/',
+      modulo: '%',
     };
     return symbols[operation] || operation;
   };
@@ -21,8 +23,31 @@ function CalculationHistory({ history }) {
       ) : (
         <ul>
           {history.map((item) => (
-            <li key={item._id}>
-              {item.numbers.join(` ${getOperationSymbol(item.operation)} `)} = {item.result}
+            <li key={item._id} className="history-item">
+              <span>
+                {item.expression ? 
+                  `${item.expression} = ${item.result}` :
+                  `${item.numbers.join(` ${getOperationSymbol(item.operation)} `)} = ${item.result}`
+                }
+              </span>
+              <div className="history-actions">
+                <button 
+                  onClick={() => onCopy(item.expression ? `${item.expression} = ${item.result}` : `${item.numbers.join(` ${getOperationSymbol(item.operation)} `)} = ${item.result}`)} 
+                  title="Copy"
+                  aria-label="Copy expression to clipboard"
+                  className="action-button copy-button"
+                >
+                  <FaCopy />
+                </button>
+                <button 
+                  onClick={() => onDelete(item._id)} 
+                  title="Delete"
+                  aria-label="Delete calculation from history"
+                  className="action-button delete-button"
+                >
+                  <FaTrash />
+                </button>
+              </div>
             </li>
           ))}
         </ul>
@@ -41,6 +66,8 @@ CalculationHistory.propTypes = {
       createdAt: PropTypes.string,
     })
   ).isRequired,
+  onDelete: PropTypes.func.isRequired,
+  onCopy: PropTypes.func.isRequired
 };
 
 export default CalculationHistory;

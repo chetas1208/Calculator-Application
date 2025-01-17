@@ -1,10 +1,10 @@
 // filepath: /frontend/src/components/CurrencyCalculator.js
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import ConversionHistory from './ConversionHistory';
 import CurrencyDisplay from './CurrencyDisplay';
 import './CurrencyCalculator.css';
-import { convertCurrency, getConversionHistory } from '../Api'; // Import updated API functions
+import { convertCurrency } from '../Api'; // Ensure this import exists
 
 function CurrencyCalculator() {
   const [amount, setAmount] = useState('');
@@ -14,50 +14,92 @@ function CurrencyCalculator() {
   const [history, setHistory] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [message, setMessage] = useState(''); // Validation Messages
 
-  useEffect(() => {
-    const fetchHistory = async () => {
-      try {
-        const data = await getConversionHistory();
-        console.log('Fetched history:', data);
-        setHistory(data);
-      } catch (error) {
-        console.error('Error fetching history:', error);
-        setError('Unable to load conversion history.');
+
+  // Define fetchHistory using useCallback
+  const fetchHistory = useCallback(async () => {
+    try {
+      const response = await fetch('/api/conversions/history');
+      if (!response.ok) {
+        throw new Error('Failed to fetch conversion history');
       }
-    };
-
-    fetchHistory();
+      const data = await response.json();
+      setHistory(data);
+    } catch (error) {
+      console.error('Error fetching history:', error);
+      setError('Unable to load conversion history.');
+    }
   }, []);
 
+  // Use fetchHistory inside useEffect and set up auto-refresh
+  useEffect(() => {
+    fetchHistory(); // Initial fetch
+
+    const interval = setInterval(() => {
+      fetchHistory();
+    }, 50); // Refresh every 10 seconds
+
+    return () => clearInterval(interval); // Clean up on unmount
+  }, [fetchHistory]);
+
+  // Handle conversion
   const handleConvert = async () => {
     if (!amount || isNaN(amount)) {
-      setResult('Please enter a valid amount.');
+      setError('Please enter a valid amount.');
       return;
     }
 
-    setLoading(true);
-    setError('');
-    setResult('');
-
     try {
-      console.log('Sending request to /api/conversions/calculate with:', { fromCurrency, toCurrency, amount });
-
-      const data = await convertCurrency(fromCurrency, toCurrency, Number(amount));
-
-      if (data.convertedAmount !== undefined) { // Check for convertedAmount
-        console.log('Received response from /api/conversions/calculate:', data);
-        setResult(`${amount} ${fromCurrency} = ${data.convertedAmount} ${toCurrency}`); // Use convertedAmount
-        setHistory(prevHistory => [data, ...prevHistory]);
-      } else {
-        setResult(data.error || 'Conversion failed.');
-      }
+      setLoading(true);
+      const response = await convertCurrency(fromCurrency, toCurrency, amount);
+      setResult(response.convertedAmount);
+      setError('');
+      // Optionally, fetchHistory() here to include the latest conversion
+      fetchHistory();
     } catch (error) {
-      console.error('Conversion error:', error);
-      setError('An unexpected error occurred.');
+      setError(error.message || 'Conversion failed.');
+      setResult('');
     } finally {
       setLoading(false);
     }
+  };
+
+  // Handle deletion of history item
+  const handleDelete = async (id) => {
+    try {
+      const response = await fetch(`/api/conversions/history/${id}`, {
+        method: 'DELETE',
+      });
+      if (!response.ok) {
+        throw new Error('Failed to delete history item');
+      }
+      // Show success message
+      setMessage('History item deleted successfully.');
+      // Remove message after 2 seconds
+      setTimeout(() => setMessage(''), 2000);
+      // Refresh history after deletion
+      fetchHistory();
+    } catch (error) {
+      console.error('Error deleting history:', error);
+      setError('Unable to delete history item.');
+    }
+  };
+
+  // Handle copy to clipboard
+  const handleCopy = (text) => {
+    navigator.clipboard.writeText(text)
+      .then(() => {
+        console.log('Copied to clipboard:', text);
+        // Show success message
+        setMessage('Text copied to clipboard.');
+        // Remove message after 2 seconds
+        setTimeout(() => setMessage(''), 2000);
+      })
+      .catch((err) => {
+        console.error('Failed to copy:', err);
+        setError('Failed to copy to clipboard.');
+      });
   };
 
   return (
@@ -103,14 +145,20 @@ function CurrencyCalculator() {
       <div className="conversion-result">
         <CurrencyDisplay
           amount={amount}
+          setAmount={setAmount}
           fromCurrency={fromCurrency}
+          setFromCurrency={setFromCurrency}
           toCurrency={toCurrency}
+          setToCurrency={setToCurrency}
           result={result}
-          isError={!!error}
+          handleConvert={handleConvert}
+          loading={loading}
+          error={error}
         />
+        {message && <div className="validation-message">{message}</div>}
         {error && <p className="error-message">{error}</p>}
       </div>
-      <ConversionHistory history={history} />
+      <ConversionHistory history={history} onDelete={handleDelete} onCopy={handleCopy} />
     </div>
   );
 }

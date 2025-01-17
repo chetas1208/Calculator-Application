@@ -26,3 +26,17 @@
   .dark-mode .error-message {
     color: #ff6666;
   }
+
+  .currency-display {
+    margin: 20px 0;
+    text-align: center;
+  }
+  
+  .currency-display h3 {
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  .error-message {
+    color: #ff0000;
+  }

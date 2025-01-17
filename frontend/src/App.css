@@ -8,6 +8,23 @@
   padding-top: 50px; /* Height of top navbar */
 }
 
+.app {
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.app.dark-mode {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.app.dark-mode main {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
 .dark-mode {
   background-color: #121212; /* Dark background */
   color: #ffffff; /* Light text */

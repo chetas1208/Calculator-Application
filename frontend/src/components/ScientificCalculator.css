@@ -1,0 +1,153 @@
+.scientific-calculator {
+  width: 500px;
+  margin: 20px auto;
+  padding: 25px;
+  border-radius: 10px;
+  background: #ffffff; /* White background */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columns */
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.buttons button {
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  background: linear-gradient(145deg, #007BFF, #0056b3); /* Blue buttons */
+  color: white;
+  cursor: pointer;
+  transition: transform 0.1s, background 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 123, 255, 0.4);
+}
+
+.buttons button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(145deg, #0056b3, #004094);
+}
+
+.backspace-button {
+  background: linear-gradient(145deg, #dc3545, #a71d2a); /* Red color */
+}
+
+.backspace-button:hover {
+  background: linear-gradient(145deg, #a71d2a, #750e1a);
+}
+
+.equals-button {
+  background: linear-gradient(145deg, #28a745, #1e7e34); /* Green color */
+}
+
+.equals-button:hover {
+  background: linear-gradient(145deg, #1e7e34, #155724);
+}
+
+.validation-message {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #d4edda; /* Light green */
+  color: #155724; /* Dark green text */
+  border: 1px solid #c3e6cb;
+  border-radius: 5px;
+  text-align: center;
+  animation: fadeInOut 2s forwards;
+}
+
+.error {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f8d7da; /* Light red */
+  color: #721c24; /* Dark red text */
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  text-align: center;
+  animation: fadeInOut 2s forwards;
+}
+
+.loading {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #fff3cd; /* Light yellow */
+  color: #856404; /* Dark yellow */
+  border: 1px solid #ffeeba;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.plus-button{
+  grid-row: span 2; /* Span 2 rows */
+}
+
+.equals-button{
+  grid-column: span 2; /* Span all columns */
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+/* Dark Mode Styles */
+.dark-mode .scientific-calculator {
+  background-color: #ffffff; /* Keep container white */
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .buttons button {
+  background: linear-gradient(145deg, #007BFF, #0056b3); /* Blue buttons */
+  color: white;
+}
+
+.dark-mode .buttons button:hover {
+  background: linear-gradient(145deg, #0056b3, #004094);
+}
+
+.dark-mode .backspace-button {
+  background: linear-gradient(145deg, #dc3545, #a71d2a); /* Red color */
+}
+
+.dark-mode .backspace-button:hover {
+  background: linear-gradient(145deg, #a71d2a, #750e1a);
+}
+
+.dark-mode .equals-button {
+  background: linear-gradient(145deg, #28a745, #1e7e34); /* Green color */
+}
+
+.dark-mode .equals-button:hover {
+  background: linear-gradient(145deg, #1e7e34, #155724);
+}
+
+.dark-mode .validation-message {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.dark-mode .error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.dark-mode .loading {
+  background-color: #856404;
+  color: #fff3cd;
+}

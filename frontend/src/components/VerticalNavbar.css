@@ -1,4 +1,60 @@
 /* Vertical Navbar Styles */
+.side-navbar {
+  background: linear-gradient(180deg, #333, #222);
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.side-navbar-links a {
+  margin: 5px 10px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.side-navbar-links a:hover {
+  background: linear-gradient(90deg, #007BFF, #0056b3);
+  transform: translateX(5px);
+}
+
+.overlay {
+  backdrop-filter: blur(3px);
+  transition: all 0.3s ease;
+}
+
+.side-navbar {
+  background: #2c3e50;
+}
+
+.nav-section h3 {
+  color: #fff;
+  padding: 10px;
+  margin: 0;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.mode-toggle {
+  padding: 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.mode-toggle button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
 .hamburger {
     background: none;
     border: none;

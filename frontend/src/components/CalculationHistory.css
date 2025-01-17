@@ -25,10 +25,40 @@
   padding: 8px;
   border-bottom: 1px solid #eee;
   font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .calculation-history li:last-child {
   border-bottom: none;
+}
+
+.history-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Button Styles */
+.action-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: transform 0.2s ease;
+}
+
+.action-button:hover {
+  transform: scale(1.2);
+}
+
+/* Specific Colors */
+.copy-button {
+  color: #007BFF; /* Blue for Copy */
+}
+
+.delete-button {
+  color: #FF4136; /* Red for Delete */
 }
 
 /* Dark Mode Styling */

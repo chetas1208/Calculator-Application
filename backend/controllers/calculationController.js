@@ -1,38 +1,57 @@
 const Calculation = require('../models/Calculation');
 
 const performCalculation = async (req, res) => {
-  const { operation, numbers } = req.body;
-
-  if (!operation || !numbers || !Array.isArray(numbers)) {
-    return res.status(400).json({ error: 'Invalid input data.' });
-  }
+  const { expression, numbers, operators } = req.body;
 
   try {
-    let result;
-    switch (operation) {
-      case 'add':
-        result = numbers.reduce((acc, num) => acc + num, 0);
-        break;
-      case 'subtract':
-        result = numbers.reduce((acc, num) => acc - num);
-        break;
-      case 'multiply':
-        result = numbers.reduce((acc, num) => acc * num, 1);
-        break;
-      case 'divide':
-        result = numbers.reduce((acc, num) => acc / num);
-        break;
-      default:
-        return res.status(400).json({ error: 'Invalid operation.' });
-    }
+    // Evaluate expression with operator precedence
+    const evaluate = (nums, ops) => {
+      // First pass: multiply, divide, modulo
+      for (let i = 0; i < ops.length; i++) {
+        if (['*', '/', '%'].includes(ops[i])) {
+          let result;
+          switch (ops[i]) {
+            case '*': result = nums[i] * nums[i + 1]; break;
+            case '/': 
+              if (nums[i + 1] === 0) throw new Error('Division by zero');
+              result = nums[i] / nums[i + 1];
+              break;
+            case '%':
+              if (nums[i + 1] === 0) throw new Error('Modulo by zero');
+              result = nums[i] % nums[i + 1];
+              break;
+          }
+          nums.splice(i, 2, result);
+          ops.splice(i, 1);
+          i--;
+        }
+      }
+      
+      // Second pass: addition, subtraction
+      let result = nums[0];
+      for (let i = 0; i < ops.length; i++) {
+        switch (ops[i]) {
+          case '+': result += nums[i + 1]; break;
+          case '-': result -= nums[i + 1]; break;
+        }
+      }
+      return result;
+    };
 
-    const calculations = new Calculation({ operation, numbers, result });
-    await calculations.save();
+    const result = evaluate([...numbers], [...operators]);
+    
+    const calculation = new Calculation({
+      operation: 'multi',
+      expression,
+      numbers,
+      result
+    });
+    await calculation.save();
 
     res.status(200).json({ result });
   } catch (error) {
     console.error('Calculation error:', error);
-    res.status(500).json({ error: 'Calculation failed.' });
+    res.status(500).json({ error: error.message || 'Calculation failed.' });
   }
 };
 
@@ -46,7 +65,17 @@ const getCalculationHistory = async (req, res) => {
   }
 };
 
+const deleteCalculationHistory = async (req, res) => {
+  try {
+    await Calculation.findByIdAndDelete(req.params.id);
+    res.status(200).json({ message: 'History deleted successfully' });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 module.exports = {
   performCalculation,
   getCalculationHistory,
+  deleteCalculationHistory
 };

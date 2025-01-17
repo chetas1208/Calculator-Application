@@ -1,4 +1,49 @@
 .currency-calculator-container {
+  padding-top: 80px;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.currency-calculator-container {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-mode .currency-calculator-container {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.dark-mode .converter-form input,
+.dark-mode .converter-form select {
+  background-color: #333;
+  color: #fff;
+  border-color: #666;
+}
+
+.converter-form input,
+.converter-form select {
+  padding: 12px 15px;
+  font-size: 16px;
+  border: 2px solid #007BFF;
+  border-radius: 10px;
+  background: #fff;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.converter-form button {
+  background: linear-gradient(145deg, #007BFF, #0056b3);
+  padding: 12px 25px;
+  border-radius: 10px;
+  transform-origin: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.converter-form button:hover:not(:disabled) {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 123, 255, 0.2);
+}
+
+.currency-calculator-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -99,5 +144,28 @@
   .converter-form select,
   .converter-form button {
     width: 80%;
+  }
+}
+
+.validation-message {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #d4edda; /* Light green */
+  color: #155724; /* Dark green text */
+  border: 1px solid #c3e6cb;
+  border-radius: 5px;
+  text-align: center;
+  animation: fadeOut 2s forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }

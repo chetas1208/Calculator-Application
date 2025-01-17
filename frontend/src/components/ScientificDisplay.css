@@ -1,0 +1,31 @@
+.scientific-display {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.dark-mode .scientific-display {
+  background: #333;
+  color: #fff;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  border: none;
+  background: transparent;
+  color: inherit;
+}
+
+.result {
+  font-size: 24px;
+  text-align: right;
+  min-height: 36px;
+}
+
+.error {
+  color: #dc3545;
+}

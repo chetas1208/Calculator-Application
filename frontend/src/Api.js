@@ -33,10 +33,14 @@ export const getCalculationHistory = async () => {
 };
 
 export const getConversionHistory = async () => {
-  const response = await fetch(`${API_BASE_URL}/conversions/history`);
-  if (!response.ok) {
-    throw new Error('Failed to fetch conversion history.');
+  try {
+    const response = await fetch(`${API_BASE_URL}/conversions/history`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch conversion history.');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('History fetch error:', error);
+    throw error;
   }
-  const data = await response.json();
-  return data;
 };

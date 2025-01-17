@@ -1,10 +1,9 @@
-// filepath: /d:/Udemy Cources/mern-calculator-app/frontend/src/components/ConversionHistory.js
-
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FaCopy, FaTrash } from 'react-icons/fa';
 import './ConversionHistory.css';
 
-function ConversionHistory({ history }) {
+function ConversionHistory({ history, onDelete, onCopy }) {
   return (
     <div className="conversion-history">
       <h3>Currency Conversion History</h3>
@@ -13,8 +12,26 @@ function ConversionHistory({ history }) {
       ) : (
         <ul>
           {history.map((item) => (
-            <li key={item._id}>
-              {item.amount} {item.fromCurrency} to {item.toCurrency} = {item.convertedAmount} at {new Date(item.createdAt).toLocaleString()}
+            <li key={item._id} className="history-item">
+              <span>
+                {`${item.amount} ${item.fromCurrency} to ${item.toCurrency} = ${item.convertedAmount} at ${new Date(item.createdAt).toLocaleString()}`}
+              </span>
+              <div className="history-actions">
+                <button 
+                  onClick={() => onCopy(`${item.amount} ${item.fromCurrency} = ${item.convertedAmount} ${item.toCurrency}`)} 
+                  title="Copy"
+                  className="action-button copy-button"
+                >
+                  <FaCopy />
+                </button>
+                <button 
+                  onClick={() => onDelete(item._id)} 
+                  title="Delete"
+                  className="action-button delete-button"
+                >
+                  <FaTrash />
+                </button>
+              </div>
             </li>
           ))}
         </ul>
@@ -31,9 +48,11 @@ ConversionHistory.propTypes = {
       toCurrency: PropTypes.string.isRequired,
       amount: PropTypes.number.isRequired,
       convertedAmount: PropTypes.number.isRequired,
-      createdAt: PropTypes.string,
+      createdAt: PropTypes.string.isRequired,
     })
   ).isRequired,
+  onDelete: PropTypes.func.isRequired,
+  onCopy: PropTypes.func.isRequired,
 };
 
 export default ConversionHistory;

@@ -1,29 +1,59 @@
-.calculator-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
 .calculator {
   width: 320px;
-  margin: 20px;
+  margin: 20px auto;
   padding: 25px;
   border: 2px solid #007BFF;
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
   background-color: #f0f8ff;
   transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  animation: slideIn 0.5s ease-out;
 }
 
-.dark-mode .calculator {
-  background-color: #444;
-  border-color: #555;
+.calculator-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-.calculator:hover {
-  background-color: #ffffff;
-  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  animation: fadeInButtons 0.5s ease-in-out;
+}
+
+.button-rect-horizontal {
+  grid-column: span 2;
+}
+
+.button-rect-vertical {
+  grid-row: span 2;
+}
+
+.buttons button {
+  padding: 18px;
+  font-size: 20px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(145deg, #007BFF, #0056b3);
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 123, 255, 0.4);
+}
+
+.buttons button:hover {
+  background: linear-gradient(145deg, #0056b3, #004094);
+}
+
+.buttons button:active {
+  transform: scale(0.98);
+  box-shadow: 0 1px 3px rgba(0, 86, 179, 0.4);
 }
 
 .display {
@@ -37,53 +67,9 @@
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.dark-mode .calculator .display {
-  background-color: #555;
-  border-color: #666;
-}
-
 .display:focus {
   border-color: #0056b3;
   box-shadow: 0 0 10px rgba(0, 86, 179, 0.5);
-}
-
-.buttons {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  animation: fadeInButtons 0.5s ease-in-out;
-}
-
-@keyframes fadeInButtons {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.buttons button {
-  padding: 18px;
-  font-size: 20px;
-  border: none;
-  border-radius: 8px;
-  background-color: #007BFF;
-  color: #ffffff;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 123, 255, 0.4);
-}
-
-.buttons button:hover {
-  background-color: #0056b3;
-}
-
-.buttons button:active {
-  transform: scale(0.98);
-  box-shadow: 0 1px 3px rgba(0, 86, 179, 0.4);
 }
 
 .result {
@@ -99,23 +85,90 @@
   color: #dc3545;
 }
 
-@media (max-width: 400px) {
-  .calculator {
-    width: 90%;
-    padding: 20px;
-  }
+.error {
+  color: #ff0000;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+}
 
-  .display {
-    font-size: 20px;
-    padding: 12px;
-  }
+.validation-message {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #d4edda; /* Light green */
+  color: #155724; /* Dark green text */
+  border: 1px solid #c3e6cb;
+  border-radius: 5px;
+  text-align: center;
+  animation: fadeOut 2s forwards;
+}
 
-  .buttons button {
-    padding: 15px;
-    font-size: 18px;
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
   }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 
-  .result {
-    font-size: 20px;
+.loading {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #fff3cd; /* Light yellow */
+  color: #856404; /* Dark yellow */
+  border: 1px solid #ffeeba;
+  border-radius: 5px;
+  text-align: center;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInButtons {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dark-mode .calculator {
+  background-color: #444;
+  border-color: #666;
+}
+
+.dark-mode .display {
+  background-color: #555;
+  border-color: #666;
+  color: #fff;
+}
+
+
+
+.dark-mode .buttons button:hover {
+  background: linear-gradient(145deg, #333, #111);
+}
+
+.dark-mode .error {
+  color: #ff6b6b;
+}
+
+.dark-mode .validation-message {
+  background-color: #d4edda;
+  color: #155724;
 }

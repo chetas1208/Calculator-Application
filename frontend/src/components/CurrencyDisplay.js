@@ -9,7 +9,7 @@ function CurrencyDisplay({ amount, fromCurrency, toCurrency, result, isError }) 
         <p className="error-message">{result}</p>
       ) : (
         <h3>
-          {amount} {fromCurrency} = {result} {toCurrency}
+          {amount ? `${Number(amount).toLocaleString()} ${fromCurrency} = ${Number(result).toLocaleString()} ${toCurrency}` : ''}
         </h3>
       )}
     </div>
