@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Calculator App
 
 ![Calculator App](./frontend/public/images/calculator-app-banner.png)
